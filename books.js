@@ -1,4 +1,4 @@
-let myLibrary=[];
+let myLibrary=["yeahahahaha","hehehehehehhe","hfhfgfhfgfhfgfhfgfhfg","utututututututut"];
 
 function Book(title,author,pages,status){
   this.title =title
@@ -7,12 +7,35 @@ function Book(title,author,pages,status){
   this.status =status
 }
 Book.prototype.info=function(){
-  console.log(`${this.title} by ${this.author}, ${this.pages} pages, ${this.status}`)
+  return `${this.title} "by " ${this.author}", "${this.pages} "pages, "${this.status}`;
 }
 
 function addBookToLibrary(){
+  const bookTitle=prompt("Book title please?");
+  const bookAuthor=prompt("Book Author please?");
+  const bookPages=prompt("Number of pages please?");
+  const bookStatus=prompt("Have you read the book? Type Yes or No");
+
+  const newBook=bookTitle +" by "+bookAuthor+", "+ bookPages+ " Reading status "+bookStatus;
+  myLibrary.push(newBook);
   
 }
+document.addEventListener("DOMContentLoaded", function(){
+  var button= document.getElementById("add");
+  button.addEventListener("click", function(){
+    addBookToLibrary();
+  });
+});
 
-const Book1= new Book('The Hobbit','J.R.R. Tolkien','295','not read yet')
-const Book2= new Book('Harry Poter','Same hot British chic','500','finsihed reading')
+function display(myLibrary){
+  let result="";
+  for(let i=myLibrary.length-1; i>0; i--){
+     var first = myLibrary[i];
+     result += "<p>" + first + "</p><br>";
+    return result;
+  }
+}
+document.addEventListener("DOMContentLoaded", function(){
+  var items=document.getElementById("cards");
+  items.innerHTML=display(myLibrary);
+  });
